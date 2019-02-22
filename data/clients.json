@@ -1,0 +1,36 @@
+{
+    "data": {
+        "11111111": {
+            "name": "Lala",
+            "lastName": "Lalic",
+            "email": "mirjanaerceg@yahoo.com",
+            "cpr": "1234567891",
+            "password": "$2y$10$IzK9JWxirVhT7Zmnsh4YqOWGDAv47DmDc8lXC3zqC2ocxoCPdZEhW",
+            "totalBalance": 0,
+            "active": 0,
+            "accounts": {
+                "checkingAccount": 0,
+                "debitAccount": 0,
+                "savingsAccount": 0
+            },
+            "transactions": {},
+            "transactionsNotRead": {}
+        },
+        "22222222": {
+            "name": "Lala",
+            "lastName": "Lalic",
+            "email": "mirjanaerceg@yahoo.com",
+            "cpr": "1234567891",
+            "password": "$2y$10$Uz6fTSrqEbABzJGZRilkyOHbpPr0NxK5CS0iP8oQvRhxe0ym0l3xG",
+            "totalBalance": 0,
+            "active": 0,
+            "accounts": {
+                "checkingAccount": 0,
+                "debitAccount": 0,
+                "savingsAccount": 0
+            },
+            "transactions": {},
+            "transactionsNotRead": {}
+        }
+    }
+}

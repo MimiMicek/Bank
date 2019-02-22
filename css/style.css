@@ -1,0 +1,70 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  font-size: 16px;
+  color: white;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: rgba(0,0,0,.1);
+
+}
+
+nav{
+  display: grid;
+  top: 0px; 
+  grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr;
+  font-size: 22px;
+  width: 100vw;
+  height: 75px;
+  padding: 0px 15% 0px 15%;
+  background-color: #5C6BC0;
+  border-bottom: 1px solid white;
+  position: fixed;
+}
+
+nav div.active{
+  background-color: rgba(0,0,0,.3);
+}
+
+form input{
+  margin: 10px 0px;
+  padding: 5px 2px;
+}
+
+button{
+  background-color: blueviolet;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+div#logout{
+ 
+}
+
+nav > div {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+}
+
+/*****************************************************************/
+div.page{
+  position: absolute;
+  top: 75px; left: 0px;
+  padding: 20px 15%;
+  color: black;
+}
