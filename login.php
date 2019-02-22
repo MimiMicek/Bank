@@ -7,7 +7,7 @@ require_once 'top.php';?>
     <br>
     <form id="frmLogin" method="POST">
       <div class="row" >
-        <input name="txtLoginPhone" type="tel" placeholder="phone" maxlength="8" value="22222222" required>
+        <input name="txtLoginPhone" type="tel" placeholder="phone" maxlength="8" value="33333333" required>
       </div>
       <div class="row">
         <input name="txtLoginPassword" type="password" placeholder="password" value="1234" required>

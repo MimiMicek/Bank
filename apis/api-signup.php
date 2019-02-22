@@ -50,7 +50,9 @@ $jClient->email = $sEmail;
 $jClient->cpr = $sCpr;
 $jClient->password = password_hash($sPassword, PASSWORD_DEFAULT);
 $jClient->totalBalance = 0;
-$jClient->active = 0;
+$jClient->active = 1;
+$jClient->iLoginAttemptsLeft = 3;
+$jClient->iLastLoginAttempt = 0;
 
 //TODO provjeriti jos kako cu napraviti accounts
 //My Accounts bi trebali prikazivati Sve accounts i Balance na svakom

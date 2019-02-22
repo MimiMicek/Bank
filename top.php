@@ -13,6 +13,7 @@
     <div class="navLink" onclick="javascript:location.href='index#logo'" data-showPage="logo">Bank Erceg</div>
     <div class="navLink" onclick="javascript:location.href='profile'" data-showPage="profile">My profile</div>
     <div class="navLink" onclick="javascript:location.href='accounts'" data-showPage="accounts">My accounts</div>
+    <div class="navLink" onclick="javascript:location.href='chat'" data-showPage="chat">Chat</div>
     <div class="navLink" onclick="javascript:location.href='index#signup'" data-showPage="signup">Sign up</div>
     <div class="navLink" onclick="javascript:location.href='login'" data-showPage="login">Login</div>
     <div class="navLink" onclick="javascript:location.href='logout'" data-showPage="logout">Logout</div>

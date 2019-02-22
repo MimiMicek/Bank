@@ -16,11 +16,13 @@ $jInnerData = $jData->data;
 if(!$jInnerData->$sPhone){
   echo 'the phone doesnt match any in the database!';
 }
-/* 
-$jInnerData->$sPhone->activationKey = uniqid(); */
+
+//setting the activationKey and the link
+$jInnerData->$sPhone->activationKey = uniqid();
+$sActivationKey = $jInnerData->$sPhone->activationKey;
 $sEmail = $jInnerData->$sPhone->email;
 $sSubject = "Forgot password link";
-$sContent = "Hello! Please click on the following link to get a new password :)!";
+$sContent = "Hello! Please click on the following link to get a new password :)! http://mimi-micek.website/set-new-password.php?phone=$sPhone&activation-key=$sActivationKey";
 
 /* if($sActivationKey != $jInnerData->$sPhone->activationKey){
   echo 'Cannot activate this';
@@ -30,6 +32,4 @@ $sContent = "Hello! Please click on the following link to get a new password :)!
 $sData = json_encode($jData, JSON_PRETTY_PRINT);
 file_put_contents('../data/clients.json', $sData);
 
-$checkIfSent = mail($sEmail, $sSubject, $sContent);
-
-echo $checkIfSent;
+mail($sEmail, $sSubject, $sContent);

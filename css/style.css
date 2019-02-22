@@ -18,7 +18,7 @@ body{
 nav{
   display: grid;
   top: 0px; 
-  grid-template-columns: 1fr 1fr 1fr 1fr  1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   font-size: 22px;
   width: 100vw;
   height: 75px;
@@ -50,9 +50,6 @@ button{
   cursor: pointer;
 }
 
-div#logout{
- 
-}
 
 nav > div {
   display: grid;
