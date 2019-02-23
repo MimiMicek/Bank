@@ -8,10 +8,18 @@ $('#frmLogin').submit(function(){
     dataType: "JSON"
   }).
   done(function(jData){
-    if(jData.status == 0){
-      console.log(jData)
+    if(jData.status == 1){
+      swal({
+        title:"CONGRATS", text:"You are now logged in", icon: "success",
+      });
+      setTimeout(function(){location.href = 'profile'}, 3000);  
+    }else{
+      swal({
+        title:"SYSTEM UPDATE", text:"System is under maintenance" + " " + jData.code, icon: "warning",
+      });
     }
-    location.href = 'profile'
+     
+    
   }).
   fail(function(){
     console.log('Error, something failed')

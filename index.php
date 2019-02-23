@@ -35,10 +35,7 @@
     </form>
     </div>
 
-    <div id="accounts" class="page">
-      <h1>ACCOUNTS</h1>
-    </div>
-
+  
   </body>
 </html>
 

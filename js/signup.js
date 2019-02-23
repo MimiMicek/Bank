@@ -12,9 +12,10 @@ $('#frmSignup').submit(function(){
       swal({
         title:"CONGRATS", text:"You have signed up", icon: "success",
       });
+      setTimeout(function(){location.href = 'login'}, 3000); 
     }else{
       swal({
-        title:"SYSTEM UPDATE", text:"System is under maintenance" +jData.code, icon: "warning",
+        title:"SYSTEM UPDATE", text:"System is under maintenance" + " " + jData.code, icon: "warning",
       });
     }
   }).

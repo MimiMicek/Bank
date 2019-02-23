@@ -1,19 +1,75 @@
 {
     "data": {
-        "33333333": {
+        "11111111": {
             "name": "Lala",
             "lastName": "Lalic",
             "email": "a@a.com",
             "cpr": "1234567891",
-            "password": "$2y$10$kkqLLn85sP42r1fqpa8pfeOyW0VDi1ISVEpdCB8x\/2ehdgvSzSWGa",
-            "totalBalance": 0,
+            "password": "$2y$10$WcY7Lcu0dQ4z0yOrVqTCceR2qQgldtdrUGg\/PUVB7g4x1umaAa4Cq",
             "active": 1,
             "iLoginAttemptsLeft": 3,
             "iLastLoginAttempt": 0,
             "accounts": {
-                "checkingAccount": 0,
-                "debitAccount": 0,
-                "savingsAccount": 0
+                "checkingAccount": {
+                    "accountName": "checking",
+                    "accountBalance": 0,
+                    "active": 1,
+                    "currency": "EUR"
+                },
+                "debitAccount": {
+                    "accountName": "debit",
+                    "accountBalance": 0,
+                    "active": 1,
+                    "currency": "DKK"
+                },
+                "savingsAccount": {
+                    "accountName": "savings",
+                    "accountBalance": 0,
+                    "active": 1,
+                    "currency": "DKK"
+                }
+            },
+            "totalBalance": {
+                "name": "balance",
+                "balance": 4000,
+                "currency": "DKK"
+            },
+            "transactions": {},
+            "transactionsNotRead": {}
+        },
+        "33333333": {
+            "name": "Malia",
+            "lastName": "Lalic",
+            "email": "a@a.com",
+            "cpr": "1234567891",
+            "password": "$2y$10$DLTZ39REodRx2fLUbP9BqOYdLcD0G3cDvmlirk50b41uVzwCq9G7O",
+            "active": 1,
+            "iLoginAttemptsLeft": 3,
+            "iLastLoginAttempt": 0,
+            "accounts": {
+                "checkingAccount": {
+                    "accountName": "checking",
+                    "accountBalance": 0,
+                    "active": 1,
+                    "currency": "EUR"
+                },
+                "debitAccount": {
+                    "accountName": "debit",
+                    "accountBalance": 0,
+                    "active": 1,
+                    "currency": "DKK"
+                },
+                "savingsAccount": {
+                    "accountName": "savings",
+                    "accountBalance": 0,
+                    "active": 1,
+                    "currency": "DKK"
+                }
+            },
+            "totalBalance": {
+                "name": "balance",
+                "balance": 1000,
+                "currency": "DKK"
             },
             "transactions": {},
             "transactionsNotRead": {}

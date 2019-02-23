@@ -15,7 +15,7 @@ if( !$jInnerData->$sPhoneFromOtherServer ){
     fnvSendResponse(0, __LINE__, 'Phone not registered in Erceg Bank');
 }
 
-$jInnerData->$sPhoneFromOtherServer->totalBalance += $iAmountFromOtherServer;
+$jInnerData->$sPhoneFromOtherServer->totalBalance->balance += $iAmountFromOtherServer;
 
 $iTransactionDate = time();
 $jTransaction->date = date('D-d-M-Y', $iTransactionDate);

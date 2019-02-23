@@ -1,5 +1,7 @@
 <?php
 
+ini_set('display_errors', 0);
+
 $sPhone = $_POST['txtSignupPhone'] ?? '';
 if(empty($sPhone)){ sendResponse(0, __LINE__); }
 if(strlen($sPhone) != 8){ sendResponse(0, __LINE__); }
@@ -49,7 +51,6 @@ $jClient->lastName = $sLastName;
 $jClient->email = $sEmail;
 $jClient->cpr = $sCpr;
 $jClient->password = password_hash($sPassword, PASSWORD_DEFAULT);
-$jClient->totalBalance = 0;
 $jClient->active = 1;
 $jClient->iLoginAttemptsLeft = 3;
 $jClient->iLastLoginAttempt = 0;
@@ -60,13 +61,37 @@ $jClient->iLastLoginAttempt = 0;
 //Svaki racun bi trebao imati svoj ID??
 $jClient->accounts = new stdClass();
 $jAccounts = $jClient->accounts;
-$jAccounts->checkingAccount = 0;
+$jAccounts->checkingAccount = new stdClass();
 $checkingAccount = $jAccounts->checkingAccount; 
-$jAccounts->debitAccount = 0; 
+$checkingAccount->accountName = "checking";
+$checkingAccount->accountBalance = 0;
+$checkingAccount->active = 1;
+$checkingAccount->currency= "EUR";
+$jAccounts->debitAccount = new stdClass(); 
 $debitAccount = $jAccounts->debitAccount;
-$jAccounts->savingsAccount = 0; 
+$debitAccount->accountName = "debit";
+$debitAccount->accountBalance = 0;
+$debitAccount->active = 1;
+$debitAccount->currency = "DKK";
+$jAccounts->savingsAccount = new stdClass(); 
 $savingsAccount = $jAccounts->savingsAccount;
-$totalBalance = $checkingAccount + $debitAccount + $savingsAccount;
+$savingsAccount->accountName = "savings";
+$savingsAccount->accountBalance = 0;
+$savingsAccount->active = 1;
+$savingsAccount->currency = "DKK";
+
+/* $overallBalance = $totalBalance->balance; */
+$debitAccountBalance = $debitAccount->accountBalance;
+$checkingAccountBalance = $checkingAccount->accountBalance;
+$savingsAccountBalance = $savingsAccount->accountBalance;
+
+$jClient->totalBalance = new stdClass();
+$totalBalance = $jClient->totalBalance;
+$totalBalance->name = "balance";
+$overallBalance = ($checkingAccountBalance * 7.47) + $debitAccountBalance + $savingsAccountBalance;
+$totalBalance->balance = $overallBalance;
+$totalBalance->currency = "DKK";
+
 $jClient->transactions = new stdClass();
 $jClient->transactionsNotRead = new stdClass();
 

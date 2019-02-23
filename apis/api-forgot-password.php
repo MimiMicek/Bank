@@ -1,9 +1,6 @@
 <?php
 
-//poslati activation link prvo pa onda kad se klikne
-//otici na novu stranicu Forgot password
-//onda napraviti isto kao i u Change password
-//samo napraviti novi password i save
+ini_set('display_errors', 0);
 
 //GET the Number from the database and send an email 
 $sPhone = $_GET['phone'];

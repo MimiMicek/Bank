@@ -32,11 +32,11 @@ if( $jData == null){ sendResponse(-1, __LINE__, 'Cannot convert data to JSON'); 
 $jInnerData = $jData->data;
 
 if($jInnerData->$sPhone){
-  if($iAmount > $jInnerData->$sUserId->totalBalance){
+  if($iAmount > $jInnerData->$sUserId->totalBalance->balance){
     sendResponse(-1, __LINE__, 'You dont have enough money in your account');
   }
-  $jInnerData->$sUserId->totalBalance -= $iAmount;
-  $jInnerData->$sPhone->totalBalance += $iAmount;
+  $jInnerData->$sUserId->totalBalance->balance -= $iAmount;
+  $jInnerData->$sPhone->totalBalance->balance += $iAmount;
 
   $sData = json_encode($jData, JSON_PRETTY_PRINT);
   file_put_contents('../data/clients.json', $sData);

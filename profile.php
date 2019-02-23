@@ -18,11 +18,18 @@ $jClient = $jInnerData->$sUserId;
 
   <div id="profile" class="page">
     <h1>PROFILE</h1>
-    <div>Name: <?= $jClient->name; ?></div>
-    <div>Last Name: <?= $jClient->lastName; ?> </div>
-    <div>Email: <?= $jClient->email; ?> </div>
-    <div>Phone: <?= $sUserId; ?> </div>
-    <div>Balance: <span id="lblBalance"><?= $jClient->totalBalance; ?></span></div>
+    <br>
+    <br>
+    <div><b>Name:</b> <?= $jClient->name; ?></div>
+    <div><b>Last Name:</b> <?= $jClient->lastName; ?> </div>
+    <div><b>Email:</b> <?= $jClient->email; ?> </div>
+    <div><b>Phone:</b> <?= $sUserId; ?> </div>
+    <div><b>Balance:</b> 
+      <span id="lblBalance">
+        <?= $jClient->totalBalance->balance; ?>
+        <?= $jClient->totalBalance->currency; ?>
+      </span>
+    </div>
     <br>
     <br>
     <div>
