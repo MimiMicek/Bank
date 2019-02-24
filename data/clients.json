@@ -1,78 +1,49 @@
 {
-    "data": {
-        "11111111": {
-            "name": "Lala",
-            "lastName": "Lalic",
-            "email": "a@a.com",
-            "cpr": "1234567891",
-            "password": "$2y$10$WcY7Lcu0dQ4z0yOrVqTCceR2qQgldtdrUGg\/PUVB7g4x1umaAa4Cq",
-            "active": 1,
-            "iLoginAttemptsLeft": 3,
-            "iLastLoginAttempt": 0,
-            "accounts": {
-                "checkingAccount": {
-                    "accountName": "checking",
-                    "accountBalance": 0,
-                    "active": 1,
-                    "currency": "EUR"
-                },
-                "debitAccount": {
-                    "accountName": "debit",
-                    "accountBalance": 0,
-                    "active": 1,
-                    "currency": "DKK"
-                },
-                "savingsAccount": {
-                    "accountName": "savings",
-                    "accountBalance": 0,
-                    "active": 1,
-                    "currency": "DKK"
-                }
-            },
-            "totalBalance": {
-                "name": "balance",
-                "balance": 4000,
-                "currency": "DKK"
-            },
-            "transactions": {},
-            "transactionsNotRead": {}
+  "data": {
+    "11111111": {
+      "name": "Lala",
+      "lastName": "Lalic",
+      "email": "a@a.com",
+      "cpr": "1234567891",
+      "password": "$2y$10$TjvLwsHXHKSqXY3wSJTvvOP1w6X2XL5i2RExF7dXcHLl2y/XB7Qv6",
+      "active": 1,
+      "iLoginAttemptsLeft": 3,
+      "iLastLoginAttempt": 0,
+      "accounts": {
+        "checkingAccount": {
+          "accountName": "checking",
+          "accountBalance": 0,
+          "active": 1,
+          "currency": "EUR"
         },
-        "33333333": {
-            "name": "Malia",
-            "lastName": "Lalic",
-            "email": "a@a.com",
-            "cpr": "1234567891",
-            "password": "$2y$10$DLTZ39REodRx2fLUbP9BqOYdLcD0G3cDvmlirk50b41uVzwCq9G7O",
-            "active": 1,
-            "iLoginAttemptsLeft": 3,
-            "iLastLoginAttempt": 0,
-            "accounts": {
-                "checkingAccount": {
-                    "accountName": "checking",
-                    "accountBalance": 0,
-                    "active": 1,
-                    "currency": "EUR"
-                },
-                "debitAccount": {
-                    "accountName": "debit",
-                    "accountBalance": 0,
-                    "active": 1,
-                    "currency": "DKK"
-                },
-                "savingsAccount": {
-                    "accountName": "savings",
-                    "accountBalance": 0,
-                    "active": 1,
-                    "currency": "DKK"
-                }
-            },
-            "totalBalance": {
-                "name": "balance",
-                "balance": 1000,
-                "currency": "DKK"
-            },
-            "transactions": {},
-            "transactionsNotRead": {}
+        "debitAccount": {
+          "accountName": "debit",
+          "accountBalance": 0,
+          "active": 1,
+          "currency": "DKK"
+        },
+        "savingsAccount": {
+          "accountName": "savings",
+          "accountBalance": 0,
+          "active": 1,
+          "currency": "DKK"
         }
+      },
+      "totalBalance": { "name": "balance", "balance": 0, "currency": "DKK" },
+      "transactions": {},
+      "transactionsNotRead": {},
+      "creditCards": {
+        "5c72525258b2f5c72525258b31": {
+          "name": "Visa",
+          "active": true,
+          "creditLimit": 5000
+        },
+        "5c7254f3ed7025c7254f3ed705": {
+          "name": "Mastercard",
+          "active": true,
+          "creditLimit": 5000
+        }
+      }
     }
+  }
 }

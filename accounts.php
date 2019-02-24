@@ -45,29 +45,38 @@ $jAccounts = $jClient->accounts;
     <h1>Transfer money</h1>
     <form id="frmTransferBetweenAccounts">
       <div class="row">
-      <label for="txtTransferFromAccount">From account (Checking, Debit, Savings or Balance)</label>
-        <input id="txtTransferFromAccount" placeholder="From account" type="text" minlength="5" maxlength="10" required> 
+      <label for="txtTransferFromAccount"><b>From account (Checking, Debit, Savings or Balance):</b></label>
+      <br>
+        <input id="txtTransferFromAccount" name="txtTransferFromAccount" placeholder="From account" type="text" minlength="5" maxlength="10" required> 
       </div>
       <div class="row">
-      <label for="txtTransferToAccount">To account (Checking, Debit, Savings or Balance)</label>
-        <input id="txtTransferToAccount" placeholder="To account" type="text" minlength="5" maxlength="10" required>
+      <label for="txtTransferToAccount"><b>To account (Checking, Debit, Savings or Balance)</b></label>
+      <br>
+        <input id="txtTransferToAccount"  name="txtTransferToAccount"  placeholder="To account" type="text" minlength="5" maxlength="10" required>
       </div>
       <div class="row">
-      <label for="txtTransferAmount">Transfer amount</label>
-        <input id="txtTransferAmount" placeholder="Amount" type="number" min="1" max="10000000000" required>
+      <label for="txtTransferAmount"><b>Transfer amount</b></label>
+      <br>
+        <input id="txtTransferAmount"  name="txtTransferAmount"  placeholder="Amount" type="number" min="1" max="10000000000" required>
       </div>
       <button>Transfer</button>
       </form>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+    <a href="create-credit-card">Check my credit cards</a>    
     </div>
   </div>
   
     
 
 <?php 
-$sLinkToScript = '<script src="js/profile.js"></script>';
+$sLinkToScript = '';
 require_once 'bottom.php'; 
 ?>
 <script>
    $('#accounts').show()
    $('#transferBetweenAccounts').show()
 </script>
+<script src="js/transfer-money-between-accounts.js"></script>

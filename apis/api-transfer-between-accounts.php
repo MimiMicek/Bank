@@ -22,7 +22,7 @@ if(strlen($sToAccount) < 5){ sendResponse(-1, __LINE__, 'Message cannot be less 
 if(strlen($sToAccount) > 10){ sendResponse(-1, __LINE__, 'Message cannot be more than 30 characters in length'); }
 
 $iAmount = $_GET['amount'] ?? '';
-if(!ctype_digit($iAmount)){ sendResponse(-1, __LINE__, 'Amount can only contain numbers'); }
+if(!is_numeric($iAmount)){ sendResponse(-1, __LINE__, 'Amount can only contain numbers'); }
 
 $sData = file_get_contents('../data/clients.json');
 $jData = json_decode( $sData );
@@ -30,28 +30,120 @@ $jData = json_decode( $sData );
 if( $jData == null){ sendResponse(-1, __LINE__, 'Cannot convert data to JSON'); }
 
 $jInnerData = $jData->data;
+$jUser = $jInnerData->$sUserId;
 
-$overallBalance = $jInnerData->$sUserId->totalBalance->balance;
-$debitAccountBalance = $jInnerData->$sUserId->accounts->debitAccount->accountBalance;
-$checkingAccountBalance = $jInnerData->$sUserId->accounts->checkingAccount->accountBalance;
-$savingsAccountBalance = $jInnerData->$sUserId->accounts->savingsAccount->accountBalance;
+$overallBalance = $jUser->totalBalance;
+$overallBalanceName = $overallBalance->name;
+$overallBalanceBalance = $overallBalance->balance;
+$overallBalanceCurrency = $overallBalance->currency;
 
-$overallBalance = $debitAccountBalance + $checkingAccountBalance +$savingsAccountBalance;
+$allAccounts = $jUser->accounts;
 
-/* echo json_encode($overallBalance);
-echo json_encode($debitAccountBalance);
-echo json_encode($checkingAccountBalance ); */
+$checkingAccount = $allAccounts->checkingAccount;
+$checkingAccountName = $checkingAccount->accountName;
+$checkingAccountBalance = $checkingAccount->accountBalance;
+$checkingAccountCurrency = $checkingAccount->currency;
 
-if($jInnerData->$sPhone){
-  if($iAmount > $jInnerData->$sUserId->totalBalance){
-    sendResponse(-1, __LINE__, 'You dont have enough money in your account');
-  }
-  $jInnerData->$sUserId->totalBalance->balance -= $iAmount;
-  $jInnerData->$sPhone->totalBalance->balance += $iAmount;
+$debitAccount = $allAccounts->debitAccount;
+$debitAccountName = $debitAccount->accountName;
+$debitAccountBalance = $debitAccount->accountBalance;
+$debitAccountCurrency = $debitAccount->currency;
 
-  $sData = json_encode($jData, JSON_PRETTY_PRINT);
-  file_put_contents('../data/clients.json', $sData);
+$savingsAccount = $allAccounts->savingsAccount;
+$savingsAccountName = $savingsAccount->accountName;
+$savingsAccountBalance = $savingsAccount->accountBalance;
+$savingsAccountCurrency = $savingsAccount->currency;
 
+switch(strtolower($sFromAccount)){
+
+  case $overallBalanceName:
+
+    if($iAmount > $jInnerData->$sUserId->totalBalance->balance){
+      sendResponse(-1, __LINE__, 'You dont have enough money in your account');
+    }
+
+    $jInnerData->$sUserId->totalBalance->balance -= $iAmount;
+
+    if(strtolower($sToAccount) == $checkingAccountName){
+      $jInnerData->$sUserId->accounts->checkingAccount->accountBalance += $iAmount / 7.47;
+    }else if($sToAccount == $debitAccountName){
+      $jInnerData->$sUserId->accounts->debitAccount->accountBalance += $iAmount;
+    }else{
+      $jInnerData->$sUserId->accounts->savingsAccount->accountBalance += $iAmount; 
+    }
+
+    $sData = json_encode($jData, JSON_PRETTY_PRINT);
+    file_put_contents('../data/clients.json', $sData);
+
+    break;
+
+  case $checkingAccountName:
+     
+    if($iAmount > $jInnerData->$sUserId->accounts->checkingAccount->accountBalance){
+      sendResponse(-1, __LINE__, 'You dont have enough money in your account');
+    }
+
+    $jInnerData->$sUserId->accounts->checkingAccount->accountBalance -= $iAmount / 7.47;
+
+    if(strtolower($sToAccount) == $overallBalanceName){
+      $jInnerData->$sUserId->totalBalance->balance += $iAmount;
+    }else if($sToAccount == $debitAccountName){
+      $jInnerData->$sUserId->accounts->debitAccount->accountBalance += $iAmount;
+    }else{
+      $jInnerData->$sUserId->accounts->savingsAccount->accountBalance += $iAmount; 
+    }
+
+    $sData = json_encode($jData, JSON_PRETTY_PRINT);
+    file_put_contents('../data/clients.json', $sData);
+
+    break;
+
+  case $debitAccountName:
+
+    if($iAmount > $jInnerData->$sUserId->accounts->debitAccount->accountBalance){
+      sendResponse(-1, __LINE__, 'You dont have enough money in your account');
+    }
+
+    $jInnerData->$sUserId->accounts->debitAccount->accountBalance -= $iAmount;
+    
+    if(strtolower($sToAccount) == $overallBalanceName){
+      $jInnerData->$sUserId->totalBalance->balance += $iAmount;
+    }else if($sToAccount == $checkingAccountName){
+      $jInnerData->$sUserId->accounts->checkingAccount->accountBalance += $iAmount / 7.47;
+    }else{
+      $jInnerData->$sUserId->accounts->savingsAccount->accountBalance += $iAmount; 
+    }
+
+    $sData = json_encode($jData, JSON_PRETTY_PRINT);
+    file_put_contents('../data/clients.json', $sData);
+
+    break;
+
+  case $savingsAccountName:
+
+    if($iAmount > $jInnerData->$sUserId->accounts->savingsAccount->accountBalance){
+      sendResponse(-1, __LINE__, 'You dont have enough money in your account');
+    }
+
+    $jInnerData->$sUserId->accounts->savingsAccount->accountBalance -= $iAmount; 
+    
+    if(strtolower($sToAccount) == $overallBalanceName){
+      $jInnerData->$sUserId->totalBalance->balance += $iAmount;
+    }else if($sToAccount == $checkingAccountName){
+      $jInnerData->$sUserId->accounts->checkingAccount->accountBalance += $iAmount / 7.47;
+    }else{
+      $jInnerData->$sUserId->accounts->debitAccount->accountBalance += $iAmount;
+    }
+
+    $sData = json_encode($jData, JSON_PRETTY_PRINT);
+    file_put_contents('../data/clients.json', $sData);
+
+    break;
+
+  default:
+
+    sendResponse( 0, __LINE__ , 'No account of that name could be found' );
+ 
 }
 
 sendResponse( 1, __LINE__ , 'Phone registered locally' );

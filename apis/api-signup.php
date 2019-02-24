@@ -80,7 +80,6 @@ $savingsAccount->accountBalance = 0;
 $savingsAccount->active = 1;
 $savingsAccount->currency = "DKK";
 
-/* $overallBalance = $totalBalance->balance; */
 $debitAccountBalance = $debitAccount->accountBalance;
 $checkingAccountBalance = $checkingAccount->accountBalance;
 $savingsAccountBalance = $savingsAccount->accountBalance;
@@ -94,7 +93,7 @@ $totalBalance->currency = "DKK";
 
 $jClient->transactions = new stdClass();
 $jClient->transactionsNotRead = new stdClass();
-
+$jClient->creditCards = new stdClass();
 
 $jInnerData->$sPhone = $jClient;//put the $jClient object in the data under the $sPhone 
 

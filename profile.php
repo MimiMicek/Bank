@@ -17,6 +17,9 @@ $jClient = $jInnerData->$sUserId;
 ?>
 
   <div id="profile" class="page">
+    <div class="row">
+      <a href="admin">Admin page</a>    
+    </div>
     <h1>PROFILE</h1>
     <br>
     <br>

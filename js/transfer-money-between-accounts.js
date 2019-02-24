@@ -30,7 +30,9 @@ $('#frmTransferBetweenAccounts').submit( function(){
         title:"TRANSFER", text:"You have sent this amount: "+$('#txtTransferAmount').val()+
         " from your " + $('#txtTransferFromAccount').val() +" to this account: "+$('#txtTransferToAccount').val(), icon: "success",
       });
+     
     }
+    setTimeout(function(){location.href = 'accounts'}, 2000); 
   }).
   fail( function(){
     console.log('FATAL ERROR')
